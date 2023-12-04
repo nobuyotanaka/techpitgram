@@ -6,4 +6,8 @@ class Post < ApplicationRecord
 
   accepts_nested_attributes_for :photos
   # 関連付けしたphotoモデルを一緒にデータ保存できる
+
+  def liked_by(user)
+    Like.find_by(user_id: user.id, post_id: id)
+  end
 end
